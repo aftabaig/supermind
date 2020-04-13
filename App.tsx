@@ -28,28 +28,23 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Routes } from "./app/Routes";
+
 import FoodPackage from "./app/packages/food";
 import GameScreen from "./app/screens/game.screen";
 import AnimalPackage from "./app/packages/animals";
 import LogoPackage from "./app/packages/logos";
 
-declare var global: {HermesInternal: null | {}};
-
 const App = () => {
 
   const [ pack, setPack ] = React.useState(new AnimalPackage());
   React.useEffect(() => {
-    const pkg = new AnimalPackage();
+    const pkg = new LogoPackage();
     setPack(pkg);
   }, []);
 
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{ flexDirection: 'row' }}>
-        <GameScreen pkg={pack} cells={20} />
-      </SafeAreaView>
-    </>
+    <Routes/>
   );
 };
 

@@ -3,7 +3,10 @@ import {
     View,
     FlatList, StyleSheet, DeviceEventEmitter
 } from "react-native";
-
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
 import CardComponent from "../components/card.component";
 import { PackageItemInterface, PackageInterface } from "../packages/package.interface";
 
@@ -13,6 +16,8 @@ interface CanvasProps {
 }
 
 const CanvasComponent: React.FC<CanvasProps> = ({ pkg, cells }) => {
+
+    console.log(pkg);
 
     const [ item1, setItem1 ] = React.useState({});
     const [ item2, setItem2 ] = React.useState({});
@@ -52,6 +57,9 @@ export default  CanvasComponent;
 
 const style = StyleSheet.create({
     main: {
-        margin: 5,
+        marginLeft: wp(1.5),
+        marginRight: wp(1.5),
+        marginTop: hp(1),
+        marginBottom: hp(1)
     }
 });

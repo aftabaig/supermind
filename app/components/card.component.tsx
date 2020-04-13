@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
     DeviceEventEmitter,
     Image,
@@ -8,7 +9,12 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
-import RNFetchBlob from "rn-fetch-blob";
+
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
+
 import FlipCard from "react-native-flip-card";
 import { PackageItemInterface } from "../packages/package.interface";
 
@@ -70,13 +76,26 @@ const CardComponent: React.FC<CardProps> = ({ item, onFlip }) => {
     };
 
     return (
-        <FlipCard style={ cleared === false ? [ styles.card, { backgroundColor: '#c58c85' } ] : [ styles.card, { backgroundColor: 'transparent' } ]} clickable={false} flip={revealed} friction={6}>
-            <TouchableOpacity style={styles.cardButton} onPress={ () => flip() }>
-                <Image style={styles.cardImage} source={ require("../assets/images/question.png") } />
+        <FlipCard style={ cleared === false ? [ styles.card, { backgroundColor: 'purple' } ] : [ styles.card, { backgroundColor: 'transparent' } ]}
+                  clickable={false}
+                  flip={revealed}
+                  friction={6}
+                  flipHorizontal={true}
+                  flipVertical={false}>
+            <View style={styles.cardButton}>
+            <TouchableOpacity onPress={() => flip()}>
+                <Image style={styles.cardImage}
+                       source={ require("../assets/images/question.png") }
+                />
             </TouchableOpacity>
-            <TouchableHighlight style={styles.cardButton}>
-                <Image style={styles.cardImage} source={ cleared == false ? item.image : null } />
-            </TouchableHighlight>
+            </View>
+            <View style={styles.cardButton}>
+                <TouchableHighlight>
+                    <Image style={styles.cardImage}
+                           source={ cleared == false ? item.image : null }
+                    />
+                </TouchableHighlight>
+            </View>
         </FlipCard>
     );
 };
@@ -85,11 +104,12 @@ export default CardComponent;
 
 const styles = StyleSheet.create({
     card: {
-        flex: 1,
         margin: 5,
-        padding: 10,
         alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 2,
+        width: wp(19.2),
+        height: hp(8)
     },
     cardImage: {
         width: 50,
@@ -98,7 +118,7 @@ const styles = StyleSheet.create({
     cardButton: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: 50,
-        height: 50
+        width: wp(19.2),
+        height: hp(8)
     }
 });

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "283771783808",
+    "firebase_url": "https://supermind-86c1a.firebaseio.com",
+    "project_id": "supermind-86c1a",
+    "storage_bucket": "supermind-86c1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283771783808:android:d79489a2faea6529e13465",
+        "android_client_info": {
+          "package_name": "com.supermind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283771783808-m5shupdkf58la5842hnt0577ikjb6ko7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0qZ04rc3VJ17F4jFbXyPRr-bEXpCF-e0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283771783808-m5shupdkf58la5842hnt0577ikjb6ko7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "283771783808-4m0bjtoh89q3j2i7ih5d8ff2fronlgse.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.octek.supermind"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

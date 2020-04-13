@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>283771783808-4m0bjtoh89q3j2i7ih5d8ff2fronlgse.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.283771783808-4m0bjtoh89q3j2i7ih5d8ff2fronlgse</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCf8Vx_WO5Pr-DEoiScUZJXIYfUhztk6g0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>283771783808</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.octek.supermind</string>
+	<key>PROJECT_ID</key>
+	<string>supermind-86c1a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>supermind-86c1a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:283771783808:ios:1e8a7207c1a846aee13465</string>
+	<key>DATABASE_URL</key>
+	<string>https://supermind-86c1a.firebaseio.com</string>
+</dict>
+</plist>
