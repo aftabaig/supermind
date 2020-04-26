@@ -1,7 +1,10 @@
 import React from "react";
 import {
     View,
-    Text, StyleSheet, DeviceEventEmitter
+    SafeAreaView,
+    Text,
+    StyleSheet,
+    DeviceEventEmitter
 } from 'react-native';
 import {
     widthPercentageToDP as dp,
@@ -13,10 +16,11 @@ import { PackageInterface } from "../packages/package.interface";
 import { GameScreenRouteProp } from "../Routes";
 
 type Props = {
-    route: GameScreenRouteProp
+    route: GameScreenRouteProp,
+    navigation: undefined
 }
 
-const GameScreen: React.FC<Props> = ({ route }) => {
+const GameScreen: React.FC<Props> = ({ route, navigation }) => {
 
     const pkg = route.params.pkg;
     const cells = route.params.cells;
@@ -68,6 +72,18 @@ const GameScreen: React.FC<Props> = ({ route }) => {
         else {
             setPlayer2Score(player2ScoreRef.current+1);
         }
+        if (player1ScoreRef.current + player2ScoreRef.current >= 3) {
+            navigation.navigate('done', {
+                player1: {
+                    name: "Player 1",
+                    score: player1ScoreRef.current
+                },
+                player2: {
+                    name: "Player 2",
+                    score: player2ScoreRef.current
+                }
+            });
+        }
     };
 
     const noMatchFound = () => {
@@ -80,7 +96,7 @@ const GameScreen: React.FC<Props> = ({ route }) => {
     };
 
     return (
-        <View style={styles.main}>
+        <SafeAreaView style={styles.main}>
             <View style={styles.scoreboard}>
                 <View style={styles.playerScore}>
                     <Text>Player 1</Text>
@@ -96,7 +112,7 @@ const GameScreen: React.FC<Props> = ({ route }) => {
                 </View>
             </View>
                 <CanvasComponent pkg={pkg} cells={cells} />
-        </View>
+        </SafeAreaView>
     );
 
 }
@@ -108,7 +124,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     scoreboard: {
-        backgroundColor: 'red',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
