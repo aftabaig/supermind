@@ -7,6 +7,7 @@ import LogoPackage from "../packages/logos";
 import FlagPackage from "../packages/flags";
 import EmoticonPackage from "../packages/emoticons";
 import BasePackage from "../packages";
+import GameContext from "../game.context";
 
 type Props = {
     route: PackagesScreenRouteProp,
@@ -19,6 +20,8 @@ type PackageListItem = {
 }
 
 const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
+
+    const { changePackage } = React.useContext(GameContext)
 
     const [ packages, setPackages ] = React.useState([
         { name: "Animals", class: new AnimalPackage() },
@@ -39,9 +42,8 @@ const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
                         <TouchableOpacity
                             style={{ height: 44, alignItems: 'center', justifyContent: 'center' }}
                             onPress={() => {
-                                navigation.navigate("game", {
-                                    pkg: item.class
-                                })
+                                changePackage(item.class);
+                                navigation.navigate("game");
                             }}>
                             <Text style={{ color: 'purple', fontFamily: 'MACCOS DOUBLE Demo', fontSize: 36 }}>{item.name}</Text>
                         </TouchableOpacity>

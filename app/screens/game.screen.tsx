@@ -13,6 +13,7 @@ import {
 import database from "@react-native-firebase/database";
 import CanvasComponent from "../components/canvas.component";
 import { GameScreenRouteProp } from "../Routes";
+import GameContext from "../game.context";
 
 type Props = {
     route: GameScreenRouteProp,
@@ -21,26 +22,28 @@ type Props = {
 
 const GameScreen: React.FC<Props> = ({ route, navigation }) => {
 
-    const pkg = route.params.pkg;
-    const cells = route.params.cells;
+    const { pkg } = React.useContext(GameContext);
+
+    //const pkg = route.params.pkg;
+    const cells = 40;
 
     const [ player1Score, _setPlayer1Score ] = React.useState(0);
     const player1ScoreRef = React.useRef(player1Score);
-    const setPlayer1Score = (score) => {
+    const setPlayer1Score = (score: number) => {
         player1ScoreRef.current = score;
         _setPlayer1Score(score);
     }
 
     const [ player2Score, _setPlayer2Score ] = React.useState(0);
     const player2ScoreRef = React.useRef(player2Score);
-    const setPlayer2Score = (score) => {
+    const setPlayer2Score = (score: number) => {
         player2ScoreRef.current = score;
         _setPlayer2Score(score);
     }
 
     const [ isPlayer1Playing, _setPlayer1Playing ] = React.useState(true);
     const isPlayer1PlayingRef = React.useRef(isPlayer1Playing);
-    const setPlayer1Playing = (isPlaying) => {
+    const setPlayer1Playing = (isPlaying: boolean) => {
         isPlayer1PlayingRef.current = isPlaying;
         _setPlayer1Playing(isPlaying);
     }

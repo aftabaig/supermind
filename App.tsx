@@ -17,7 +17,7 @@ import {
   Image,
   View,
   Text,
-  StatusBar,
+  StatusBar, Animated,
 } from 'react-native';
 
 import {
@@ -29,22 +29,21 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Routes } from "./app/Routes";
-
-import FoodPackage from "./app/packages/food";
-import GameScreen from "./app/screens/game.screen";
+import GameContext from './app/game.context'
 import AnimalPackage from "./app/packages/animals";
-import LogoPackage from "./app/packages/logos";
+import BasePackage from "./app/packages";
 
 const App = () => {
 
-  const [ pack, setPack ] = React.useState(new AnimalPackage());
-  React.useEffect(() => {
-    const pkg = new LogoPackage();
-    setPack(pkg);
-  }, []);
+  const [ currentPackage, setPackage ] = React.useState(new AnimalPackage());
+  const changePackage = (pkg: BasePackage) => {
+    setPackage(pkg);
+  }
 
   return (
-    <Routes/>
+      <GameContext.Provider value={{ pkg: currentPackage, changePackage: changePackage }}>
+        <Routes/>
+      </GameContext.Provider>
   );
 };
 
