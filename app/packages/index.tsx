@@ -1,4 +1,4 @@
-import PackageInterface from './package.interface';
+import { PackageInterface } from './package.interface';
 
 export default class BasePackage implements PackageInterface {
 
@@ -8,7 +8,7 @@ export default class BasePackage implements PackageInterface {
     constructor() {
     }
 
-    private createRandomNumbers = (min: bigint, max: bigint, count: bigint) => {
+    private createRandomNumbers = (min: number, max: number, count: number) => {
         let randomNumbers = [];
         let ok = false;
         while (!ok) {

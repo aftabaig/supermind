@@ -5,6 +5,8 @@ import { PackageInterface } from "../packages/package.interface";
 import AnimalPackage from "../packages/animals";
 import FoodPackage from "../packages/food";
 import LogoPackage from "../packages/logos";
+import FlagPackage from "../packages/flags";
+import EmoticonPackage from "../packages/emoticons";
 
 type Props = {
     route: PackagesScreenRouteProp,
@@ -22,8 +24,8 @@ const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
         { name: "Animals", class: new AnimalPackage() },
         { name: "Food", class: new FoodPackage() },
         { name: "Logos", class: new LogoPackage() },
-        { name: "Flags", class: new LogoPackage() },
-        { name: "Emoticons", class: new LogoPackage() }
+        { name: "Flags", class: new FlagPackage() },
+        { name: "Emoticons", class: new EmoticonPackage() }
     ]);
 
     return (
