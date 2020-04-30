@@ -8,10 +8,11 @@ import {
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 import CardComponent from "../components/card.component";
-import { PackageItemInterface, PackageInterface } from "../packages/package.interface";
+import { PackageItemInterface } from "../packages/package.interface";
+import BasePackage from "../packages";
 
 interface CanvasProps {
-    pkg: PackageInterface
+    pkg: BasePackage
     cells: number
 }
 

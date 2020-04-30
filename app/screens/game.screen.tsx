@@ -12,7 +12,6 @@ import {
 } from 'react-native-responsive-screen';
 import database from "@react-native-firebase/database";
 import CanvasComponent from "../components/canvas.component";
-import { PackageInterface } from "../packages/package.interface";
 import { GameScreenRouteProp } from "../Routes";
 
 type Props = {

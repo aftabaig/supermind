@@ -1,11 +1,6 @@
 import { ImageSourcePropType } from "react-native";
 
-export interface PackageItemInterface {
+export type PackageItemInterface = {
     id: number,
     image: ImageSourcePropType
-}
-
-export interface PackageInterface {
-    items: PackageItemInterface[]
-    gameItems: PackageItemInterface[]
 }

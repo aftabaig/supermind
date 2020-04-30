@@ -7,11 +7,10 @@ import GameScreen from "../app/screens/game.screen";
 import HomeScreen from "../app/screens/home.screen";
 import PackagesScreen from "../app/screens/packages.screen";
 import DoneScreen from "../app/screens/done.screen";
-import LogoPackage from "./packages/logos";
-import { PackageInterface } from "./packages/package.interface";
+import BasePackage from "./packages";
 
 type StackParamList = {
-    game: { pkg: PackageInterface, cells: number },
+    game: { pkg: BasePackage, cells: number },
     home: undefined,
     done: { player1: { name: string, score: number }, player2: { name: string, score: number } },
     gameType: undefined,

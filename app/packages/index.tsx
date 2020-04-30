@@ -1,9 +1,9 @@
-import { PackageInterface } from './package.interface';
+import { PackageItemInterface } from './package.interface';
 
-export default class BasePackage implements PackageInterface {
+export default class BasePackage {
 
-    items = [];
-    gameItems = [];
+    items: PackageItemInterface[] = [];
+    gameItems: PackageItemInterface[] = [];
 
     constructor() {
     }
@@ -22,7 +22,7 @@ export default class BasePackage implements PackageInterface {
         return randomNumbers
     }
 
-    private shuffle(array) {
+    private shuffle(array: PackageItemInterface[]) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -31,7 +31,7 @@ export default class BasePackage implements PackageInterface {
 
     randomImages = (count: number) => {
         let randomNumbers = this.createRandomNumbers(0, this.items.length - 1, count/2);
-        let randomItems = [];
+        let randomItems: PackageItemInterface[] = [];
         randomNumbers.forEach((rn => {
             randomItems.push(this.items[rn]);
             randomItems.push(this.items[rn]);

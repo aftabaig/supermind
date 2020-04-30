@@ -1,12 +1,12 @@
 import React from "react";
 import {Text, View, Image, TouchableOpacity, FlatList} from "react-native";
 import { PackagesScreenRouteProp } from "../Routes";
-import { PackageInterface } from "../packages/package.interface";
 import AnimalPackage from "../packages/animals";
 import FoodPackage from "../packages/food";
 import LogoPackage from "../packages/logos";
 import FlagPackage from "../packages/flags";
 import EmoticonPackage from "../packages/emoticons";
+import BasePackage from "../packages";
 
 type Props = {
     route: PackagesScreenRouteProp,
@@ -15,7 +15,7 @@ type Props = {
 
 type PackageListItem = {
     name: string,
-    class: PackageInterface
+    class: BasePackage
 }
 
 const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
