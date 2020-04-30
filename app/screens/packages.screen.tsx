@@ -20,7 +20,7 @@ const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
 
     const [ packages, setPackages ] = React.useState([
         { name: "Animals", class: new AnimalPackage() },
-        { name: "Food", class: new AnimalPackage() },
+        { name: "Food", class: new FoodPackage() },
         { name: "Logos", class: new LogoPackage() },
         { name: "Flags", class: new LogoPackage() },
         { name: "Emoticons", class: new LogoPackage() }
