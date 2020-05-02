@@ -31,7 +31,7 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   InitializeFlipper(application);
 #endif
-  
+      
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
@@ -49,6 +49,11 @@ static void InitializeFlipper(UIApplication *application) {
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  BOOL handled = [UIApplication.sharedApplication.delegate application:app openURL:url options:options];
+  return handled;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
