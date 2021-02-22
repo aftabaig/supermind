@@ -10,38 +10,33 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  FlatList,
   StyleSheet,
-  ScrollView,
-  Image,
-  View,
-  Text,
-  StatusBar, Animated,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Routes } from "./app/Routes";
 import GameContext from './app/game.context'
 import AnimalPackage from "./app/packages/animals";
 import BasePackage from "./app/packages";
+import { IMode } from "./app/models/mode.interface";
 
 const App = () => {
 
-  const [ currentPackage, setPackage ] = React.useState(new AnimalPackage());
+  const [ currentPackage, setPackage ] = React.useState<BasePackage | undefined>(undefined);
   const changePackage = (pkg: BasePackage) => {
     setPackage(pkg);
-  }
+  };
+
+  const [ currentMode, setMode ] = React.useState<IMode>();
+  const changeMode = (mode: IMode) => {
+    setMode(mode);
+  };
 
   return (
-      <GameContext.Provider value={{ pkg: currentPackage, changePackage: changePackage }}>
+      <GameContext.Provider value={{ pkg: currentPackage, changePackage: changePackage, changeMode: changeMode }}>
         <Routes/>
       </GameContext.Provider>
   );

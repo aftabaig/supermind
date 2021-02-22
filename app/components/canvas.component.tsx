@@ -18,10 +18,9 @@ interface CanvasProps {
 
 const CanvasComponent: React.FC<CanvasProps> = ({ pkg, cells }) => {
 
-    console.log(pkg);
-
     const [ item1, setItem1 ] = React.useState({});
     const [ item2, setItem2 ] = React.useState({});
+    const [ matches, setMatches ] = React.useState(0);
 
     const onFlip = (item: PackageItemInterface) => {
         if (Object.keys(item1).length === 0) {
@@ -30,8 +29,13 @@ const CanvasComponent: React.FC<CanvasProps> = ({ pkg, cells }) => {
         else if (Object.keys(item2).length === 0) {
             setItem2(item);
             if (item1.id === item.id) {
+                setMatches(matches+1);
+                console.log("matches: ", matches);
                 DeviceEventEmitter.emit('disable');
                 DeviceEventEmitter.emit('match', { id: item.id });
+                if (matches + 1 >= cells / 2) {
+                    DeviceEventEmitter.emit('gameOver');
+                }
             }
             else {
                 DeviceEventEmitter.emit('disable');

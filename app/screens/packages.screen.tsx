@@ -43,7 +43,7 @@ const PackagesScreen: React.FC<Props> = ({ route, navigation }) => {
                             style={{ height: 44, alignItems: 'center', justifyContent: 'center' }}
                             onPress={() => {
                                 changePackage(item.class);
-                                navigation.navigate("game");
+                                navigation.navigate("modes");
                             }}>
                             <Text style={{ color: 'purple', fontFamily: 'MACCOS DOUBLE Demo', fontSize: 36 }}>{item.name}</Text>
                         </TouchableOpacity>

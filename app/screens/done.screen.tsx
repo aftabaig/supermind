@@ -15,11 +15,11 @@ const DoneScreen: React.FC<Props> = ({ route, navigation }) => {
     return (
         <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
             <Image source={require('../assets/images/win3.gif')} />
-            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', width: '75%', height: 44 }} onPress={() => { navigation.push('game')}}>
+            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', width: '75%', height: 44 }} onPress={() => { navigation.navigate('game')}}>
                 <Text style={{ color: 'purple', fontFamily: 'MACCOS DOUBLE Demo', fontSize: 36 }}>Play Again</Text>
             </TouchableOpacity>
             <View style={{ height: 5 }}/>
-            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', width: '75%', height: 44 }} onPress={() => { navigation.push('game')}}>
+            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', width: '75%', height: 44 }} onPress={() => { navigation.navigate('home')}}>
                 <Text style={{ color: 'purple', fontFamily: 'MACCOS DOUBLE Demo', fontSize: 36 }}>Home</Text>
             </TouchableOpacity>
         </View>

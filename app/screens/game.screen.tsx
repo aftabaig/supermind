@@ -10,7 +10,6 @@ import {
     widthPercentageToDP as dp,
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
-import database from "@react-native-firebase/database";
 import CanvasComponent from "../components/canvas.component";
 import { GameScreenRouteProp } from "../Routes";
 import GameContext from "../game.context";
@@ -23,8 +22,6 @@ type Props = {
 const GameScreen: React.FC<Props> = ({ route, navigation }) => {
 
     const { pkg } = React.useContext(GameContext);
-
-    //const pkg = route.params.pkg;
     const cells = 40;
 
     const [ player1Score, _setPlayer1Score ] = React.useState(0);
@@ -32,39 +29,31 @@ const GameScreen: React.FC<Props> = ({ route, navigation }) => {
     const setPlayer1Score = (score: number) => {
         player1ScoreRef.current = score;
         _setPlayer1Score(score);
-    }
+    };
 
     const [ player2Score, _setPlayer2Score ] = React.useState(0);
     const player2ScoreRef = React.useRef(player2Score);
     const setPlayer2Score = (score: number) => {
         player2ScoreRef.current = score;
         _setPlayer2Score(score);
-    }
+    };
 
     const [ isPlayer1Playing, _setPlayer1Playing ] = React.useState(true);
     const isPlayer1PlayingRef = React.useRef(isPlayer1Playing);
     const setPlayer1Playing = (isPlaying: boolean) => {
         isPlayer1PlayingRef.current = isPlaying;
         _setPlayer1Playing(isPlaying);
-    }
-
+    };
 
     React.useEffect(() => {
         const noMatchSubscription = DeviceEventEmitter.addListener('noMatch', noMatchFound);
         const matchSubscription = DeviceEventEmitter.addListener('match', matchFound);
+        const gameOverSubscription = DeviceEventEmitter.addListener('gameOver', gameOver);
         return () => {
             noMatchSubscription.remove();
             matchSubscription.remove();
+            gameOverSubscription.remove();
         }
-    }, []);
-
-    React.useEffect(() => {
-        const subscriber = database();
-        const ref = subscriber.ref("users/1");
-        ref.on('value', snapshot => {
-            console.log(snapshot.val());
-        })
-        return () => subscriber
     }, []);
 
     const matchFound = () => {
@@ -73,18 +62,6 @@ const GameScreen: React.FC<Props> = ({ route, navigation }) => {
         }
         else {
             setPlayer2Score(player2ScoreRef.current+1);
-        }
-        if (player1ScoreRef.current + player2ScoreRef.current >= 3) {
-            navigation.navigate('done', {
-                player1: {
-                    name: "Player 1",
-                    score: player1ScoreRef.current
-                },
-                player2: {
-                    name: "Player 2",
-                    score: player2ScoreRef.current
-                }
-            });
         }
     };
 
@@ -95,6 +72,19 @@ const GameScreen: React.FC<Props> = ({ route, navigation }) => {
         else {
             setPlayer1Playing(true);
         }
+    };
+
+    const gameOver = () => {
+        navigation.navigate('done', {
+            player1: {
+                name: "Player 1",
+                score: player1ScoreRef.current
+            },
+            player2: {
+                name: "Player 2",
+                score: player2ScoreRef.current
+            }
+        });
     };
 
     return (
@@ -116,8 +106,7 @@ const GameScreen: React.FC<Props> = ({ route, navigation }) => {
                 <CanvasComponent pkg={pkg} cells={cells} />
         </SafeAreaView>
     );
-
-}
+};
 
 export default GameScreen;
 
